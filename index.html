@@ -19,8 +19,7 @@
     // the link to your model provided by Teachable Machine export panel
     const URL = "./my_model/";
     let model, webcam, ctx, labelContainer, maxPredictions;
-    // window.onload = updateClock;
-    var totalTime = 10;
+    var totalTime = 40;
 
     function updateClock() {
       document.getElementById('countdown').innerHTML = totalTime;
@@ -31,6 +30,7 @@
         setTimeout("updateClock()", 1000);
       }
     }
+
     async function init() {
       const modelURL = URL + "model.json";
       const metadataURL = URL + "metadata.json";
@@ -65,28 +65,31 @@
       await predict();
       window.requestAnimationFrame(loop);
     }
-    var status = "correct";
-    var time = 0;
+
     async function predict() {
-      // Prediction #1: run input through posenet
-      // estimatePose can take in an image, video or canvas html element
       const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-      // Prediction 2: run input through teachable machine classification model
       const prediction = await model.predict(posenetOutput);
-      if (prediction[0].className == "Deltoid_Left_Correction" && prediction[0].probability.toFixed(2) > 0.90) {
+      if (prediction[0].className == "neck_left" && prediction[0].probability.toFixed(2) > 0.90) {
         labelContainer.childNodes[0].innerHTML = "Correct";
-      } else if (prediction[1].className == "Deltoid_Left_Wrong" && prediction[1].probability.toFixed(2) > 0.70) {
-        labelContainer.childNodes[1].innerHTML = "Wrong";
+      } else if (prediction[1].className == "neck_right" && prediction[1].probability.toFixed(2) > 0.90) {
+        labelContainer.childNodes[1].innerHTML = "Correct";
+      } else if (prediction[2].className == "neck_down" && prediction[2].probability.toFixed(2) > 0.90) {
+        labelContainer.childNodes[2].innerHTML = "Correct";
+      } else if (prediction[3].className == "neck_up" && prediction[3].probability.toFixed(2) > 0.90) {
+        labelContainer.childNodes[3].innerHTML = "Correct";
       } else {
         labelContainer.childNodes[0].innerHTML = "Wrong";
+        labelContainer.childNodes[1].innerHTML = "Wrong";
+        labelContainer.childNodes[2].innerHTML = "Wrong";
+        labelContainer.childNodes[3].innerHTML = "Wrong";
       }
       drawPose(pose);
     }
 
+
     function drawPose(pose) {
       if (webcam.canvas) {
         ctx.drawImage(webcam.canvas, 0, 0);
-        // draw the keypoints and skeleton
         if (pose) {
           const minPartConfidence = 0.5;
           tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
