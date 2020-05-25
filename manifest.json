@@ -5,13 +5,6 @@
   "browser_action": {
     "default_title": "Hopiens Correction",
     "default_popup": "index.html"
-  }
-  // "content_scripts": [
-  //   {
-  //     "matches": ["<all_urls>"],
-  //     "js": ["script.js"],
-  //     "css": ["styles.css"],
-  //     "html": ["index.html"]
-  //   }
-  // ]
+  },
+  "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self'"
 }
