@@ -5,11 +5,13 @@
 </head>
 
 <body>
-  <span id="countdown"></span>
-
+  
   <button type="button" onclick="init()">Start</button>
-  <div><canvas id="canvas"></canvas></div>
+  <div id="workout"></div>
   <div id="label-container"></div>
+  <div><span id="countdown"></span></div>
+  <canvas id="canvas"></canvas>
+
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
   <script type="text/javascript">
@@ -19,12 +21,32 @@
     // the link to your model provided by Teachable Machine export panel
     const URL = "./my_model/";
     let model, webcam, ctx, labelContainer, maxPredictions;
-    var totalTime = 40;
+    var totalTime = 80;
 
     function updateClock() {
       document.getElementById('countdown').innerHTML = totalTime;
       if (totalTime == 0) {
-        console.log('Final');
+        document.getElementById('workout').innerHTML = "Done";
+      } else if ((80 >= totalTime && totalTime > 70) || (60 >= totalTime && totalTime > 50) || (40 >= totalTime && totalTime > 30) || (20 >= totalTime && totalTime > 10)) {
+        document.getElementById('workout').innerHTML = "Breath";
+        totalTime -= 1;
+        setTimeout("updateClock()", 1000);
+      } else if (70 >= totalTime && totalTime > 60) {
+        document.getElementById('workout').innerHTML = "Left Neck";
+        totalTime -= 1;
+        setTimeout("updateClock()", 1000);
+      } else if(50 >= totalTime && totalTime > 40) {
+        document.getElementById('workout').innerHTML = "Right Neck";
+        totalTime -= 1;
+        setTimeout("updateClock()", 1000);
+      } else if(30 >= totalTime && totalTime > 20) {
+        document.getElementById('workout').innerHTML = "Back Neck";
+        totalTime -= 1;
+        setTimeout("updateClock()", 1000);
+      } else if(10 >= totalTime && totalTime > 0) {
+        document.getElementById('workout').innerHTML = "Front Neck";
+        totalTime -= 1;
+        setTimeout("updateClock()", 1000);
       } else {
         totalTime -= 1;
         setTimeout("updateClock()", 1000);

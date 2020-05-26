@@ -3,5 +3,21 @@ body{
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-size: 20vw;
+  font-size: 50px;
 }
+
+#workout {
+  position: absolute;
+  z-index: 1;
+}
+
+#canvas {
+  position: absolute;
+  /* z-index: ; */
+}
+/* #countdown {
+  position: absolute;
+  top: 10px;
+   left: 10px;
+  /* z-index: 3; */
+/* }  */
