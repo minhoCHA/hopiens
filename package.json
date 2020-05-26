@@ -1,0 +1,22 @@
+{
+  "name": "hopiens",
+  "version": "1.0.0",
+  "description": "Posture Correction Chrome Extension Application",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minhoCHA/hopiens.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minhoCHA/hopiens/issues"
+  },
+  "homepage": "https://github.com/minhoCHA/hopiens#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0"
+  }
+}

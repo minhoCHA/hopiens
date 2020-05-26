@@ -1,23 +1,42 @@
+@import url(https://fonts.googleapis.com/css?family=Chewy);
+
 body{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-size: 50px;
+  font-size: 30px;
+}
+
+
+#container {
+  position: relative;
+}
+#container canvas, #countdown, #workout, #label-container, #word {
+  position: absolute;
+}
+
+#countdown {
+  left: 10px;
+  font-family: 'Chewy';
+  color: #2aa2a2;
+  font-size: 100px;
 }
 
 #workout {
-  position: absolute;
-  z-index: 1;
+  left: 350px;
+  top: 10px;
+  font-family: 'Chewy';
+  color: #71dada;
+  font-size: 30px;
 }
 
-#canvas {
-  position: absolute;
-  /* z-index: ; */
+#label-container {
+  left: 400px;
+  top: 300px;
 }
-/* #countdown {
-  position: absolute;
-  top: 10px;
-   left: 10px;
-  /* z-index: 3; */
-/* }  */
+
+#word {
+  left: 150px;
+  top: 250px;
+  font-size: 50px;
+  font-family: 'Chewy';
+  color: #ff3385;
+}
+
