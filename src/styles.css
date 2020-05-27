@@ -1,9 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Chewy);
-
 body{
   font-size: 30px;
 }
-
 
 #container {
   position: relative;
@@ -39,4 +36,3 @@ body{
   font-family: 'Chewy';
   color: #ff3385;
 }
-
