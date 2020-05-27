@@ -3,11 +3,14 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
+
   <button type="button" class="btn btn-info" onclick="init()">Start</button>
+  <div id="like_button_container"></div>
   <div id="container">
     <canvas id="canvas"></canvas>
     <div id="workout"></div>
@@ -15,15 +18,25 @@
     <div id="label-container"></div>
     <div id="countdown"></div>
   </div>
-  
+
+<div id="app"></div>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Load our React component. -->
+  <script src="like_button.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-  <script type="text/javascript">
+  <script type="text/javascript" src="bundle.js">
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
     // the link to your model provided by Teachable Machine export panel
-    const URL = "./my_model/";
+    const URL = "../../my_model/";
     let model, webcam, ctx, labelContainer, maxPredictions;
     var totalTime = 80;
 
@@ -39,15 +52,15 @@
         document.getElementById('workout').innerHTML = "Left Neck";
         totalTime -= 1;
         setTimeout("updateClock()", 1000);
-      } else if(50 >= totalTime && totalTime > 40) {
+      } else if (50 >= totalTime && totalTime > 40) {
         document.getElementById('workout').innerHTML = "Right Neck";
         totalTime -= 1;
         setTimeout("updateClock()", 1000);
-      } else if(30 >= totalTime && totalTime > 20) {
+      } else if (30 >= totalTime && totalTime > 20) {
         document.getElementById('workout').innerHTML = "Back Neck";
         totalTime -= 1;
         setTimeout("updateClock()", 1000);
-      } else if(10 >= totalTime && totalTime > 0) {
+      } else if (10 >= totalTime && totalTime > 0) {
         document.getElementById('workout').innerHTML = "Front Neck";
         totalTime -= 1;
         setTimeout("updateClock()", 1000);
