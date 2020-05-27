@@ -1,24 +1,33 @@
-var path = require('path');
-var SRC_DIR = path.join(__dirname, '/react-client/src');
-var DIST_DIR = path.join(__dirname, '/react-client/dist');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
 
 module.exports = {
-  entry: `${SRC_DIR}/index.jsx`,
+  entry: './src/app.js',
   output: {
-    filename: 'bundle.js',
-    path: DIST_DIR
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
-  module : {
-    rules : [
+  module: {
+    rules: [
       {
-        test : /\.jsx?/,
-        include : SRC_DIR,
-        loader : 'babel-loader',      
-        enforce: "pre",
-        query: {
-          presets: ['react', 'es2015']
-       }
-      }
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      },
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Webpack Output",
+    }),
+  ],
 };

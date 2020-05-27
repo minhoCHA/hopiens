@@ -1,31 +1,23 @@
 {
-  "name": "hopiens",
+  "name": "hello",
   "version": "1.0.0",
-  "description": "Posture Correction Chrome Extension Application",
-  "main": "index.js",
+  "description": "",
+  "main": "hello.js",
   "scripts": {
-    "dev": "webpack -d --watch"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --d",
+    "build": "webpack --mode production"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/minhoCHA/hopiens.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/minhoCHA/hopiens/issues"
-  },
-  "homepage": "https://github.com/minhoCHA/hopiens#readme",
-  "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.1.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "bootstrap": "^4.5.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
   "devDependencies": {
+    "@babel/core": "^7.10.0",
+    "@babel/preset-env": "^7.10.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   }
